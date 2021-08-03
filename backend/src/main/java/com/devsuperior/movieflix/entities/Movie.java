@@ -15,9 +15,11 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String subTitle;
+    private String director;
     private Integer year;
     private String imgUrl;
+
+    @Column(length = 4000)
     private String synopsis;
 
     @ManyToOne
@@ -30,10 +32,10 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis) {
+    public Movie(Long id, String title, String director, Integer year, String imgUrl, String synopsis) {
         this.id = id;
         this.title = title;
-        this.subTitle = subTitle;
+        this.director = director;
         this.year = year;
         this.imgUrl = imgUrl;
         this.synopsis = synopsis;
@@ -55,12 +57,12 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getDirector() {
+        return director;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public Integer getYear() {
