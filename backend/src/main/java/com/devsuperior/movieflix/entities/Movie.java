@@ -19,7 +19,7 @@ public class Movie implements Serializable {
     private Integer year;
     private String imgUrl;
 
-    @Column(length = 4000)
+    @Column(columnDefinition = "TEXT")
     private String synopsis;
 
     @ManyToOne
@@ -95,6 +95,10 @@ public class Movie implements Serializable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 
     @Override
