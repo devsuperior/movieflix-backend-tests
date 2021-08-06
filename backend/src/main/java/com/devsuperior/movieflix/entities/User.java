@@ -122,4 +122,13 @@ public class User implements UserDetails,  Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public boolean hasRole(String roleName) {
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
