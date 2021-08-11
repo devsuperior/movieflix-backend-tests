@@ -19,7 +19,6 @@ public class GenreService {
 
     @Transactional(readOnly = true)
     public List<GenreDTO> findAll() {
-
         List<Genre> list = genreRepository.findAll();
         return list.stream().map(x -> new GenreDTO(x)).collect(Collectors.toList());
     }
