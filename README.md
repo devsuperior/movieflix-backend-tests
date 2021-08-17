@@ -45,3 +45,10 @@ cd backend
 # executar o projeto
 ./mvnw spring-boot:run
 ```
+
+
+# Autor
+
+Wellington Mazoni de Andrade
+
+https://www.linkedin.com/in/wmazoni
