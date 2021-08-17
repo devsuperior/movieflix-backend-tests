@@ -20,15 +20,15 @@ https://www.figma.com/file/cOjZ9zvM7U9hrZrL3AReSA/Desafio-MovieFlix?node-id=0%3A
 - [X] JPA / Hibernate
 - [X] Maven
 ## Front end
-- [] HTML / CSS / JS / TypeScript
-- [] ReactJS
-- [] React Native
-- [] Apex Charts
-- [] Expo
+- [ ] HTML / CSS / JS / TypeScript
+- [ ] ReactJS
+- [ ] React Native
+- [ ] Apex Charts
+- [ ] Expo
 ## Implantação em produção
-- [] Back end: AWS
-- [] Front end web: AWS
-- [] Banco de dados: Postgresql
+- [ ] Back end: AWS
+- [ ] Front end web: AWS
+- [ ] Banco de dados: Postgresql
 
 # Como executar o projeto
 
