@@ -12,18 +12,16 @@ public class ReviewDTO {
     @NotBlank
     private String text;
     private Long movieId;
-    private Long userId;
     private UserDTO user;
 
 
     public ReviewDTO() {
     }
 
-    public ReviewDTO(Long id, String text, Long movieId, Long userId, UserDTO user) {
+    public ReviewDTO(Long id, String text, Long movieId, UserDTO user) {
         this.id = id;
         this.text = text;
         this.movieId = movieId;
-        this.userId = userId;
         this.user = user;
     }
 
@@ -56,14 +54,6 @@ public class ReviewDTO {
 
     public void setMovieId(Long movieId) {
         this.movieId = movieId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public UserDTO getUser() {

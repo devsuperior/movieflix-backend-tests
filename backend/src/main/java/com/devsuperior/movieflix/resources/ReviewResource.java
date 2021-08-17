@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -20,7 +21,7 @@ public class ReviewResource {
     private ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<ReviewDTO> insert(@RequestBody ReviewDTO dto) {
+    public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
         dto = reviewService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
