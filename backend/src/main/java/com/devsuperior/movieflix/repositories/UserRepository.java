@@ -1,5 +1,12 @@
 package com.devsuperior.movieflix.repositories;
 
-public interface UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import com.devsuperior.movieflix.entities.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+	User findByEmail(String email);
 }
