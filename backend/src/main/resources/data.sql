@@ -8,9 +8,9 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 
-INSERT INTO tb_genre (name) VALUES ('Aventura');
-INSERT INTO tb_genre (name) VALUES ('Ficção');
-INSERT INTO tb_genre (name) VALUES ('Romance');
+INSERT INTO tb_genre (name, created_At) VALUES ('Aventura', NOW());
+INSERT INTO tb_genre (name, created_At) VALUES ('Ficção', NOW());
+INSERT INTO tb_genre (name, created_At) VALUES ('Romance', NOW());
     
 INSERT INTO tb_movie (title, sub_title, year, synopsis, img_url, genre_id) VALUES ('The flash', 'O futuro favorece o mais rápido', 2014, 'Um perito forense desperta de um coma com poderes especiais que serão postos à prova na luta contra forças que ameaçam a cidade.', 'https://www.themoviedb.org/t/p/w500_and_h282_face/4lFnO2gAuypakvm82WKzqCqwl1D.jpg', 1 );
 INSERT INTO tb_movie (title, sub_title, year, synopsis, img_url, genre_id) VALUES ('A filha de Osiris', 'Corrida contra o tempo', 2016, 'A história se passa no futuro, em tempos de colonização interplanetária. Sy Lombrok (Kellan Lutz), um ex-enfermeiro e que agora é um andarilho,com um passado assombrado, forma uma aliança improvável com Kane Sommerville (Daniel MacPherson), um tenente que trabalha fora do mundo militar Exor.', 'https://www.themoviedb.org/t/p/original/5HlTix2YQw24NCGZ7D83VJeRkLh.jpg', 2);
