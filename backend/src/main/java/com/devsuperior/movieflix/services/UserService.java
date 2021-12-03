@@ -36,6 +36,8 @@ public class UserService implements UserDetailsService {
 		return new UserDTO(entity);
 	}
 	
+	
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = repository.findByEmail(username);
@@ -49,5 +51,6 @@ public class UserService implements UserDetailsService {
 		
 	}
 
+	
 }
 

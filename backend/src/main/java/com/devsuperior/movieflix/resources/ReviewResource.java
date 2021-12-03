@@ -2,11 +2,14 @@ package com.devsuperior.movieflix.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.dto.ReviewDTO;
-import com.devsuperior.movieflix.services.GenreService;
 import com.devsuperior.movieflix.services.ReviewService;
 
 @RestController
@@ -50,9 +51,11 @@ public class ReviewResource {
 		ReviewDTO dto = service.findById(id);		
 		return ResponseEntity.ok().body(dto);
 	}
-
+	
+	@PreAuthorize("hasAnyRole('MEMBER')")
 	@PostMapping
-	public ResponseEntity<ReviewDTO> insert(@RequestBody ReviewDTO dto) {
+	public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
+		
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(dto.getId()).toUri();
@@ -60,7 +63,7 @@ public class ReviewResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ReviewDTO> update(@PathVariable Long id, @RequestBody ReviewDTO dto) {
+	public ResponseEntity<ReviewDTO> update(@PathVariable Long id, @Valid @RequestBody ReviewDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}

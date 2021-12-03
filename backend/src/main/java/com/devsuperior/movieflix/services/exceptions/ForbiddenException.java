@@ -9,3 +9,4 @@ public class ForbiddenException extends RuntimeException {
 	}
 
 }
+

@@ -8,5 +8,7 @@ import com.devsuperior.movieflix.entities.Review;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
+
+	
 }
 

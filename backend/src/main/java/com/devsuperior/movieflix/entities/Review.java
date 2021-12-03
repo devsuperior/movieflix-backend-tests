@@ -22,6 +22,8 @@ public class Review implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(columnDefinition = "TEXT")
 	private String text;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE ")
@@ -38,15 +40,15 @@ public class Review implements Serializable {
 	@JoinColumn(name = "movie_id")
 	private Movie movie;
 	
+	
 	public Review() {
 	}
 
-	public Review(Long id, String text, User user, Movie movie) {
-		super();
+	public Review(Long id, String text) {
+		
 		this.id = id;
 		this.text = text;
-		this.user = user;
-		this.movie = movie;
+		
 	}
 
 	public Long getId() {
@@ -56,6 +58,10 @@ public class Review implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public User getUser() {
+		return user;
+	}
 
 	public String getText() {
 		return text;
@@ -63,10 +69,6 @@ public class Review implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-	
-	public User getUser() {
-		return user;
 	}
 
 	public void setUser(User user) {

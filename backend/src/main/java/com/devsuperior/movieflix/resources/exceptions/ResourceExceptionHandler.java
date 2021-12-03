@@ -55,6 +55,7 @@ public class ResourceExceptionHandler {
 		err.setMessage(e.getMessage());
 		err.setPath(request.getRequestURI());
 		
+		
 		for(FieldError f: e.getBindingResult().getFieldErrors()) {
 			err.addError(f.getField(), f.getDefaultMessage());
 		}

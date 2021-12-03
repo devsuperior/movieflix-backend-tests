@@ -1,18 +1,14 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 
@@ -27,21 +23,13 @@ public class Genre implements Serializable {
 	private String name;
 	
 	
-	/*@OneToMany(mappedBy = "genre")
+	@OneToMany(mappedBy = "genre")
 	private List<Movie> movies = new ArrayList<>();
-	*/
-	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE ")
-	private Instant createdAt;
-	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE ")
-	private Instant updatedAt;
 	
 	public Genre() {
 	}
 
 	public Genre(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
@@ -61,34 +49,6 @@ public class Genre implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	/*
-	public List<Movie> getMovies() {
-		return movies;              
-	}
-    */
-	
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public Instant getUpdatedAt() {
-		return updatedAt;
-	}
-
-	@PrePersist
-	public void prePersist() {
-		createdAt = Instant.now();
-		
-	}
-	
-	@PreUpdate
-	public void preUpdate() {
-		updatedAt = Instant.now();
-	}
-	
 	
 	@Override
 	public int hashCode() {
@@ -114,8 +74,5 @@ public class Genre implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
 	
 }
