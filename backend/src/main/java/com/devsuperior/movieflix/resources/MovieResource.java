@@ -55,7 +55,7 @@ public class MovieResource {
 		MovieDTO dto = service.findById(id);		
 		return ResponseEntity.ok().body(dto);
 	}
-    
+    /*
 	@PreAuthorize("hasAnyRole('MEMBER')")
 	@PostMapping
 	public ResponseEntity<MovieDTO> insert(@Valid @RequestBody MovieDTO dto) {
@@ -64,7 +64,7 @@ public class MovieResource {
 				.buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
-	
+	*/
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<MovieDTO> update(@PathVariable Long id, @Valid @RequestBody MovieDTO dto) {
 		dto = service.update(id, dto);

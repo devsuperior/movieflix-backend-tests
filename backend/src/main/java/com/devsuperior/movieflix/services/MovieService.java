@@ -62,7 +62,7 @@ public class MovieService {
 		Movie entity  = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new MovieDTO(entity, entity.getReviews());
 	}
-	
+	/*
 	@Transactional
 	public MovieDTO insert(MovieDTO dto) {
 		Movie entity = new Movie();
@@ -81,7 +81,7 @@ public class MovieService {
 		entity.setSynopsis(dto.getSynopsis());
 		
 	}
-	
+	*/
 	@Transactional
 	public MovieDTO update(Long id, MovieDTO dto) {
 		try {
