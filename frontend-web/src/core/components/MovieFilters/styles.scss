@@ -1,0 +1,56 @@
+.movie-filters-container {
+   //width: 100%;
+    height: 80px;
+    margin-top: 42px;
+    margin-left: 140px;
+    margin-right: 140px;
+    padding: 15px 839px 15px 20px;
+    background: #6C6C6C;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+.input-search {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E1E1E1;
+    flex: 1;
+ 
+    input {
+        border: none;
+ 
+        &::placeholder {
+            color: #9E9E9E;
+        }
+ 
+        &:focus {
+            box-shadow: none;
+        }
+    }
+ }
+
+ .input-search {
+    width: 260px;
+    height: 50px;
+    padding: 13px 122px 17px 12px;
+    border: 1px solid #E1E1E1;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+
+    color: #6C6C6C;
+    
+}
+
+.card-input-text {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
+}
