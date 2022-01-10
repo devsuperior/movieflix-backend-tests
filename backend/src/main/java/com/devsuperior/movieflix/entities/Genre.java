@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "tb_genre")
@@ -49,6 +51,13 @@ public class Genre implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
 	
 	@Override
 	public int hashCode() {

@@ -14,11 +14,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 	
 	@Query("SELECT obj FROM Movie obj WHERE :genre IS NULL OR obj.genre = :genre")
 	Page<Movie> find(Genre genre, Pageable pageable);
-
-	//void find(List<Movie> content);
-
-	//Page<Movie> find(List<Genre> genre, PageRequest pageRequest);
-
+	
 
 }
 

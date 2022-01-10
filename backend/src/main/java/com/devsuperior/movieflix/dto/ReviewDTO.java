@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
@@ -16,29 +18,23 @@ public class ReviewDTO implements Serializable {
 	
 	private Long id;
 	
+	@Size(min = 1, max = 255, message = "Mensagem inválida, por favor digitar entre 5 a 60 caracteres!")
 	@NotBlank(message = "Campo requirido")
+	@NotEmpty
 	private String text;
 	
 	private Long movieId;
-	//private UserDTO user;
 	
-	private List<UserDTO> user = new ArrayList<>();
-	
-	private String name;
-	private String email;
-	private Long userId;
+	private UserDTO userId;
 	
 	public ReviewDTO() {
 	}
 
-	public ReviewDTO(Long id, String text, Long movieId, Long userId, String name, String email) {
+	public ReviewDTO(Long id, String text, Long movieId, UserDTO userId) {
 		this.id = id;
 		this.text = text;
 		this.movieId = movieId;
-		//this.user = user;
 		this.userId = userId;
-		this.name = name;
-		this.email = email;
 		
 	}
 	
@@ -46,17 +42,14 @@ public class ReviewDTO implements Serializable {
 		id = entity.getId();
 		text = entity.getText();
 		movieId = entity.getMovie().getId();
-		userId = entity.getUser().getId();
-		name = entity.getUser().getName();
-		email = entity.getUser().getEmail();
-		
+		userId = new UserDTO(entity.getUser());
 	}
-
+   /*
 	public ReviewDTO(Review entity, List<User> user) {
 		this(entity);
 		user.forEach(rev -> this.user.add(new UserDTO(rev)));
 	}
-
+   */
 	public Long getId() {
 		return id;
 	}
@@ -81,28 +74,14 @@ public class ReviewDTO implements Serializable {
 		this.movieId = movieId;
 	}
 
-	public Long getUserId() {
+	public UserDTO getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(UserDTO userId) {
 		this.userId = userId;
 	}
-    
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	
 }

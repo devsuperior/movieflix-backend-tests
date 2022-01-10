@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -32,7 +33,10 @@ public class ReviewResource {
 	private ReviewService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<ReviewDTO>> findAll(
+	public ResponseEntity<List<ReviewDTO>> findAll() {
+			List<ReviewDTO> list = service.findAll();
+			
+			/*
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
@@ -42,6 +46,7 @@ public class ReviewResource {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);	
 		
 		Page<ReviewDTO> list = service.findAllPaged(pageRequest);		
+		*/
 		
 		return ResponseEntity.ok().body(list);
 	}
@@ -52,7 +57,7 @@ public class ReviewResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@PreAuthorize("hasAnyRole('MEMBER')")
+	//@PreAuthorize("hasAnyRole('MEMBER')")
 	@PostMapping
 	public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
 		

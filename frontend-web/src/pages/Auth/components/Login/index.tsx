@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-//import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-//import ButtonIcon from '../../../../core/components/ButtonIcon';
 import RotaCard from '../Card';
 import './styles.scss';
 import { saveSessionData } from '../../../../core/utils/auth';

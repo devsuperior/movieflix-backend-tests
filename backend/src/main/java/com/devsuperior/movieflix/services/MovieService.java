@@ -1,6 +1,5 @@
 package com.devsuperior.movieflix.services;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devsuperior.movieflix.dto.GenreDTO;
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.entities.Genre;
@@ -41,47 +39,34 @@ public class MovieService {
 	
 	@Transactional(readOnly = true)
 	public Page<MovieDTO> findAllPaged(Long genreId, PageRequest pageRequest){
-		Genre genre =  (genreId == 0) ? null : (genreRepository.getOne(genreId));
-		Page<Movie> page = repository.find(genre, pageRequest);
-		//repository.find(page.getContent());
+		Genre genres =  (genreId == 0) ? null : (genreRepository.getOne(genreId));
+		Page<Movie> page = repository.find(genres, pageRequest);
 		return page.map(x -> new MovieDTO(x));
 	}
 	
+	
 	@Transactional(readOnly = true)
-	public List<ReviewDTO> findAll(){
-		List<Review> list = reviewRepository.findAll();
-		return list.stream().map(x -> new ReviewDTO(x)).collect(Collectors.toList());
-		
+	public List<MovieDTO> findAll() {
+		List<Movie> list = repository.findAll();
+		return list.stream().map(x -> new MovieDTO(x)).collect(Collectors.toList());
 	}
 	
-	
 	@Transactional(readOnly = true)
-	public MovieDTO findById(Long id) {
-		
+	public MovieDTO findById(Long id) {	
 		Optional<Movie> obj = repository.findById(id);
 		Movie entity  = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-		return new MovieDTO(entity, entity.getReviews());
+		return new MovieDTO(entity);
 	}
-	/*
+	
 	@Transactional
 	public MovieDTO insert(MovieDTO dto) {
 		Movie entity = new Movie();
-		copyDtoToEntity(dto, entity);
-		
+		copyDTOEntity(dto, entity);
 		entity = repository.save(entity);
-		return new MovieDTO(entity);	
+		return new MovieDTO(entity);
 	}
 	
-	private void copyDtoToEntity(MovieDTO dto, Movie entity) {
-		
-		entity.setTitle(dto.getTitle());
-		entity.setSubTitle(dto.getSubTitle());
-		entity.setYear(dto.getYear());
-		entity.setImgUrl(dto.getImgUrl());
-		entity.setSynopsis(dto.getSynopsis());
-		
-	}
-	*/
+
 	@Transactional
 	public MovieDTO update(Long id, MovieDTO dto) {
 		try {
@@ -112,6 +97,18 @@ public class MovieService {
         }
 	}
 
-
+	private void copyDTOEntity(MovieDTO dto, Movie entity) {
+		entity.setTitle(dto.getTitle());
+		entity.setSubTitle(dto.getSubTitle());
+		entity.setYear(dto.getYear());
+		entity.setImgUrl(dto.getImgUrl());
+		entity.setSynopsis(dto.getSynopsis());
+		
+		entity.getReviews().clear();
+		for (ReviewDTO revDTO : dto.getReviews()) {
+			Review review =  reviewRepository.getOne(revDTO.getId());
+			entity.getReviews().add(review);
+		}
+	}
 	   
 }

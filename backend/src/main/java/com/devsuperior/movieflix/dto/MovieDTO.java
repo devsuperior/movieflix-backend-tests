@@ -1,35 +1,38 @@
 package com.devsuperior.movieflix.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.validation.constraints.NotBlank;
 
 import com.devsuperior.movieflix.entities.Movie;
-import com.devsuperior.movieflix.entities.Review;
 
 public class MovieDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotBlank(message = "Campo obrigatório!")
 	private String title;
+	
+	@NotBlank(message = "Campo obrigatório!")
 	private String subTitle;
+	
 	private Integer year;
 	private String imgUrl;
+	
+	@NotBlank(message = "Campo obrigatório!")
 	private String synopsis;
 
-	private ReviewDTO review;
 	private Long genreId;
-	private Long reviewId;
-	private String text;
 	
-	private List<GenreDTO> genres = new ArrayList<>();
-	
-	private List<ReviewDTO> reviews = new ArrayList<>();
+	private Set<ReviewDTO> reviews = new HashSet<>();
 	
 	public MovieDTO() {
 	}
 
-	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Long genreId, List<ReviewDTO> reviews) {
+	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Long genreId) {
 		
 		this.id = id;
 		this.title = title;
@@ -38,11 +41,10 @@ public class MovieDTO implements Serializable {
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
 		this.genreId = genreId;
-		this.reviews = reviews;
 	}
 	
 	public MovieDTO(Movie entity) {
-		super();
+		
 		id = entity.getId();
 		title = entity.getTitle();
 		subTitle = entity.getSubTitle();
@@ -50,14 +52,15 @@ public class MovieDTO implements Serializable {
 		imgUrl = entity.getImgUrl();
 		synopsis = entity.getSynopsis();
 		genreId = entity.getGenre().getId();
-		
+		entity.getReviews().forEach(review -> this.reviews.add(new ReviewDTO(review)));
 		}
 	
+	/*
 	public MovieDTO(Movie entity, List<Review> reviews) {
 		this(entity);
 		reviews.forEach(rev -> this.reviews.add(new ReviewDTO(rev)));
 	}
-
+    */
 	public Long getId() {
 		return id;
 	}
@@ -107,12 +110,8 @@ public class MovieDTO implements Serializable {
 	}
 	
 		
-    public List<ReviewDTO> getReviews() {
+    public Set<ReviewDTO> getReviews() {
 		return reviews;
-	}
-
-	public void setReviews(List<ReviewDTO> reviews) {
-		this.reviews = reviews;
 	}
 
 	public void setGenreId(Long genreId) {
@@ -122,5 +121,6 @@ public class MovieDTO implements Serializable {
 	public Long getGenreId() {
 		return genreId;
 	}
+
 	
 }

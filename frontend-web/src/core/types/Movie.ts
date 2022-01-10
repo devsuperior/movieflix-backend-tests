@@ -10,15 +10,31 @@ export type Movie = {
     year: number;
     imgUrl: string;
     synopsis: string;
-    genreId: number;
+    genreId: string;
+    genreName: string;
     reviews: Review[];
+    genres: Genre[];
+    
 }
 
 export type Review = {
     id: number;
     text: string;
     movieId: number;
+    userId: User;
+}
+
+export type Genre = {
+    id: number;
+    name: string;
+}
+
+export type User = {
+    id: number;
     name: string;
     email: string;
-    userId: number;
+}
+
+export type review = {
+    userId: User;
 }
