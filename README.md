@@ -15,9 +15,9 @@ Também foi desenvolvido uma implementação de testes de integração. E foi im
  
 ## Layout
 <p align="center">
-  <img width="600" src="front-web/src/core/assets/images/Rota.png">
-  <img width="600" src="front-web/src/core/assets/images/Card_Movies.jpg">
-  <img width="600" src="front-web/src/core/assets/images/movies_movieId.png">
+  <img width="600" src="frontend-web/src/core/assets/images/Rota.png">
+  <img width="600" src="frontend-web/src/core/assets/images/Card_Movies.jpg">
+  <img width="600" src="frontend-web/src/core/assets/images/movies_movieId.png">
  
 </P>
 
