@@ -9,7 +9,7 @@ E possível tambem fazer uma visualização detalhada de cada filme além de uma
  
 ## Informações adicionais
 
-Este projeto foi desenvolvido com a utilização do framework react, e spring boot. Foi utilizado bibliotecas como NPM, bootstramp, typescript e yarn. Este aplicativo foi implementado usando o  
+Este projeto foi desenvolvido com a utilização do framework react, e spring boot. Foi utilizado bibliotecas como NPM, bootstramp, typescript e yarn. Este aplicativo foi implementado usando o gerenciador de pacotes e dependencias yarn.
 
 Também foi desenvolvido uma implementação de testes de integração. E foi implantado com padrão de camadas na arquitetura rest do spring e injeção de dependência, além de ser construido dentro dos metódos de segurança do oauth2.
  
